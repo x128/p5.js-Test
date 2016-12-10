@@ -1,0 +1,22 @@
+html {
+    background: url("iPhone_5S.svg") no-repeat fixed;
+    background-size: 300px 630px;
+    background-position: center;
+    overflow:hidden;
+}
+
+body {
+    position: absolute;
+    overflow: auto !important;
+    width: 251px;
+    height: 446px !important;
+    top: 50%;
+    left: 50%;
+    margin: -224px 0 0 -127px !important;
+    background-color: white;
+    padding: 3px;
+}
+
+div {
+  min-height: 0 !important;
+}
