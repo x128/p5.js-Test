@@ -27,9 +27,13 @@ function addText(parent, name) {
   return div;
 }
 
-function addSlider(parent, min, max, value) {
-  var btn = $('<input type="range" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
+function addSlider(parent, id, min, max, value) {
+  var btn = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
   parent.append(btn);
   $("div").trigger('create');
   return btn;
+}
+
+function sliderValue(id) {
+  return $('#' + id).val();
 }

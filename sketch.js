@@ -12,7 +12,8 @@ function setup() {
   
   btn2.click(function() {
     hideButton(btn1);
+    txt1.text('slider value is ' + sliderValue('sl'));
   });
   
-  addSlider(page, 0, 100, 25);
+  addSlider(page, 'sl', 0, 100, 25);
 }
