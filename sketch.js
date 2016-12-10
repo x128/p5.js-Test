@@ -2,7 +2,7 @@ function setup() {
   var page = initPage();
 
   var btn1 = addButton(page, "say something");
-  var btn2 = addButton(page, "remove txt");
+  var btn2 = addButton(page, "hide btn1");
 
   var txt1 = addText(page, 'hi');
 
@@ -11,7 +11,7 @@ function setup() {
   });
   
   btn2.click(function() {
-    txt1.remove();
+    btn1.parent().hide();
   });
   
   addSlider(page, 0, 100, 25);
