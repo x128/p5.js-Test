@@ -11,7 +11,7 @@ function setup() {
   });
   
   btn2.click(function() {
-    btn1.parent().hide();
+    hideButton(btn1);
   });
   
   addSlider(page, 0, 100, 25);

@@ -13,6 +13,14 @@ function addButton(parent, name) {
   return btn;
 }
 
+function showButton(btn) {
+  btn.parent().show();
+}
+
+function hideButton(btn) {
+  btn.parent().hide();
+}
+
 function addText(parent, name) {
   var div = $("<div>" + name + "</div>");
   parent.append(div);
