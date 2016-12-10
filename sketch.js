@@ -15,5 +15,10 @@ function setup() {
     txt1.text('slider value is ' + sliderValue('sl'));
   });
   
-  addSlider(page, 'sl', 0, 100, 25);
+  var slider = addSlider(page, 'sl', 0, 100, 25);
+  
+  $(document).on('change', slider, function() {
+    var opacity = sliderValue('sl') / 100;
+    page.css('opacity', opacity);
+  });
 }
