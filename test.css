@@ -20,3 +20,7 @@ body {
 div {
   min-height: 0 !important;
 }
+
+.ui-mobile .ui-page-active {
+    background-color: transparent;
+}

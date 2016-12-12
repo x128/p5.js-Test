@@ -1,6 +1,8 @@
 function setup() {
   var page = initPage();
 
+  $('body').css('background-color', 'white');
+
   var btn1 = addButton(page, "say something");
   var btn2 = addButton(page, "hide btn1");
 
@@ -13,6 +15,7 @@ function setup() {
   btn2.parent().click(function() {
     hideButton(btn1);
     txt1.text('slider value is ' + sliderValue('sl'));
+    $('body').css('background-color', 'cyan');
   });
   
   var slider = addSlider(page, 'sl', 0, 100, 25);
