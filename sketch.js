@@ -17,6 +17,19 @@ function setup() {
   
   var slider = addSlider(page, 'sl', 0, 100, 25);
   
+  addText(page, 'some text...');
+  addImage(page, 'img/med_christmas-lights-strand2.png');
+  addText(page, 'some text...');
+
+  var imgLights2 = addImage(page, 'img/med_christmas-lights-strand2.png');
+  imgLights2.css({
+    width: '50px',
+    height: '30px',
+    position: 'absolute',
+    left: '100px',
+    top: '40px',
+  });
+
   $(document).on('change', slider, function() {
     var opacity = sliderValue('sl') / 100;
     page.css('opacity', opacity);

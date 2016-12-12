@@ -37,3 +37,9 @@ function addSlider(parent, id, min, max, value) {
 function sliderValue(id) {
   return $('#' + id).val();
 }
+
+function addImage(parent, src) {
+  var img = $('<img src="' + src + '" />');
+  parent.append(img);
+  return img;
+}
