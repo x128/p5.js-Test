@@ -34,9 +34,11 @@ function setup() {
   
   var slider = addSlider(page, 'sl', 0, 100, 25);
   
-  addText(page, 'some text...');
-  addImage(page, 'img/med_christmas-lights-strand2.png');
-  addText(page, 'some text...');
+  $('body').dblclick(function() {
+    addImage(page, 'img/med_christmas-lights-strand2.png');
+    addText(page, 'some text...');
+    return false;
+  });
 
   var imgLights2 = addImage(page, 'img/med_christmas-lights-strand2.png');
   imgLights2.css({
