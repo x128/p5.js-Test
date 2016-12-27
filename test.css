@@ -24,3 +24,7 @@ div {
 .ui-mobile .ui-page-active {
     background-color: transparent;
 }
+
+div.ui-page-active {
+  min-height: 453px !important;
+}
