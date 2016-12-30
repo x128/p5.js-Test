@@ -27,6 +27,13 @@ function addText(parent, name) {
   return div;
 }
 
+function addTextInput(parent) {
+  var textInput = $('<input type="text">');
+  parent.append(textInput);
+  $("div").trigger('create');
+  return textInput;
+}
+
 function addSlider(parent, id, min, max, value) {
   var btn = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
   parent.append(btn);
@@ -34,7 +41,7 @@ function addSlider(parent, id, min, max, value) {
   return btn;
 }
 
-function sliderValue(id) {
+function inputValue(id) {
   return $('#' + id).val();
 }
 
