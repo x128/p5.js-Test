@@ -9,9 +9,9 @@ function setup() {
 
   var stopwatchRunning = false;
   var stopwatchValue = 0;
-  
+
   btnStart.parent().click(function() {
-    
+
     if (stopwatchRunning) return;
     stopwatchRunning = true;
 
@@ -26,14 +26,14 @@ function setup() {
     };
     updateStopwatch();
   });
-  
+
   btnStop.parent().click(function() {
     if (!stopwatchRunning) return;
     stopwatchRunning = false;
   });
-  
-  var slider = addSlider(page, 'sl', 0, 100, 25);
-  
+
+  var slider = addSlider(page, 'sl', 0, 100, 100);
+
   $('body').dblclick(function() {
     addImage(page, 'img/med_christmas-lights-strand2.png');
     addText(page, 'some text...');
@@ -50,7 +50,23 @@ function setup() {
   });
 
   $(document).on('change', slider, function() {
-    var opacity = sliderValue('sl') / 100;
+    var opacity = inputValue('sl') / 100;
     page.css('opacity', opacity);
+  });
+
+  var chkDevMode = addCheckbox(page, 'Developer Mode');
+  var btnExplode = addButton(page, 'Minimalism Mode');
+  hideButton(btnExplode);
+  chkDevMode.click(function(event) {
+    var checked = chkDevMode.prop('checked');
+    if (checked)
+      showButton(btnExplode);
+    else
+      hideButton(btnExplode);
+    return false;
+  });
+
+  btnExplode.click(function() {
+    page.hide();
   });
 }

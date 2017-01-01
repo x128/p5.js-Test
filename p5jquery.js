@@ -41,6 +41,15 @@ function addSlider(parent, id, min, max, value) {
   return btn;
 }
 
+function addCheckbox(parent, caption) {
+  var input = $('<input type="checkbox">');
+  var label = $('<label>' + caption + '</label>');
+  label.append(input);
+  parent.append(label);
+  $("label").trigger('create');
+  return input;
+}
+
 function inputValue(id) {
   return $('#' + id).val();
 }
