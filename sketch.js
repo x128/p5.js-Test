@@ -36,11 +36,13 @@ function keyPressed() {
 }
 
 function Phone() {
-  this.secondsBeforeBlock = 60;
-  this.needRecentFunction = true;
-  this.calculatorIsOpened = false;
-  this.stopwatchIsOpened = false;
-  this.stopwatchIsRunning = false;
+  // this.secondsBeforeBlock = 60;
+  // this.needRecentFunction = true;
+  // this.calculatorIsOpened = false;
+  // this.stopwatchIsOpened = false;
+  // this.stopwatchIsRunning = false;
+
+
 
   this.goHome = function() {
     this.showMenuButtons();
@@ -456,7 +458,7 @@ function initCalculator(page, x, y) {
 }
 
 function initStopwatch(page, x, y) {
-  img_stopwatch = addImage(page, 'img/android_market-300x300.png')
+  img_stopwatch = addImage(page, 'img/stopwatch.png')
   img_stopwatch.css({
     width: '80px',
     height: '70px',
@@ -540,7 +542,7 @@ function initNote(page, x, y) {
 }
 
 function initCalendar(page, x, y) {
-  img_calendar = addImage(page, 'img/events-icon.png')
+  img_calendar = addImage(page, 'img/calendar.png')
   img_calendar.css({
     width: '80px',
     height: '70px',
