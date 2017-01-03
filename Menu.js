@@ -7,26 +7,27 @@ class Menu {
         this.initMainMenu();
         this.initSecondMenu();
         this.secondMenu.hide();
+        this.self = this;
     }
 
-    onFunctionsClick(self) {
-        self.secondMenu.show();
-        self.mainMenu.hide();
+    onAutoLockClick(self) {
+
     }
+
 
     initMainMenu() {
         this.mainMenu = $('<div></div>');
 
         var mainMenuButtons = {
             "Password" : false,
-            "AutoLock" : false,
+            "AutoLock" : this.onAutoLockClick,
             "Time" : false,
             "Date" : false,
             "ScreenShot" : false,
             "Screen" : false,
             "About" : false,
-            "Functions" : this.onFunctionsClick,
-            "Special features" : false
+            "Special features" : false,
+            "Functions" : Menu.onFunctionsClick
         };
         for (var btnName in mainMenuButtons) {
             this.addMenuButton(this.mainMenu, mainMenuButtons[btnName], btnName);
@@ -38,23 +39,37 @@ class Menu {
     initSecondMenu() {
         this.secondMenu = $('<div></div>');
 
-        this.addMenuButton(this.secondMenu, 0, "Calculator", "Calculator");
-        this.addMenuButton(this.secondMenu, 0, "Stopwatch", "stopwatch");
-        this.addMenuButton(this.secondMenu, 0, "Paint", "paint");
-        this.addMenuButton(this.secondMenu, 0, "Gallery", "Gallery2");
-        this.addMenuButton(this.secondMenu, 0, "Playmarket", "playmarket");
-        this.addMenuButton(this.secondMenu, 0, "Music", "music");
-        this.addMenuButton(this.secondMenu, 0, "Notes", "note");
-        this.addMenuButton(this.secondMenu, 0, "Reminders", "reminderr");
+        this.addMenuButton(this.secondMenu, this.onSettingsClick, "Settings", "Settings copy");
+        this.addMenuButton(this.secondMenu, false, "Calculator", "Calculator");
+        this.addMenuButton(this.secondMenu, false, "Stopwatch", "stopwatch");
+        this.addMenuButton(this.secondMenu, false, "Paint", "paint");
+        this.addMenuButton(this.secondMenu, false, "Gallery", "Gallery2");
+        this.addMenuButton(this.secondMenu, false, "Playmarket", "playmarket1");
+        this.addMenuButton(this.secondMenu, false, "Music", "music");
+        this.addMenuButton(this.secondMenu, false, "Notes", "note");
+        this.addMenuButton(this.secondMenu, false, "Reminders", "reminderr");
         this.addMenuButton(this.secondMenu, this.onSiriClick, "Siri", "siri");
-        this.addMenuButton(this.secondMenu, 0, "Timer", "timer");
-        this.addMenuButton(this.secondMenu, 0, "Yandex", "yandex");
-        this.addMenuButton(this.secondMenu, 0, "Calendar", "calendar");
-        this.addMenuButton(this.secondMenu, 0, "Messages", "messages");
+        this.addMenuButton(this.secondMenu, false, "Timer", "timer");
+        this.addMenuButton(this.secondMenu, false, "Yandex", "yandex");
+        this.addMenuButton(this.secondMenu, false, "Calendar", "calendar");
+        this.addMenuButton(this.secondMenu, false, "Messages", "messages");
 
         this.page.append(this.secondMenu);
     }
 
+    onSiriClick() {
+
+    }
+    //
+    onFunctionsClick() {
+        this.secondMenu.show();
+        this.mainMenu.hide();
+    }
+
+    onSettingsClick() {
+        this.secondMenu.hide();
+        this.mainMenu.show();
+    }
 
     addMenuButton(container, onclick, caption, image) {
 
@@ -65,9 +80,9 @@ class Menu {
         } else {
             btn = addButton(container, caption);
         }
-        var self = this;
-        btn.parent().click(function () {
-            onclick(self);
+
+        btn.parent().click(function() {
+            onclick();
         });
     }
 }

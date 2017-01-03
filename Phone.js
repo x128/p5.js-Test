@@ -3,7 +3,6 @@
  */
 class Phone {
 
-
     constructor(page) {
         this.page = page;
         this.menu = new Menu(page);
