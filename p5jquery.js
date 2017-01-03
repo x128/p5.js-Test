@@ -1,6 +1,6 @@
 function initPage() {
-  var div1 = $('<div data-role="page" class="ui-page ui-page-theme-a ui-page-active">')
-  var div2 = $('<div data-role="content" data-theme="a" style="margin: 10px;"></div>')
+  var div1 = $('<div data-role="page" class="ui-page ui-page-theme-a ui-page-active">');
+  var div2 = $('<div data-role="content" data-theme="a" style="margin: 10px;"></div>');
   $('body').append(div1);
   div1.append(div2);
   return div2;
@@ -21,6 +21,14 @@ function hideButton(btn) {
   btn.parent().hide();
 }
 
+function hideElement(element) {
+  element.hide();
+}
+
+function showElement(element) {
+  element.show();
+}
+
 function addText(parent, name) {
   var div = $("<div>" + name + "</div>");
   parent.append(div);
@@ -28,10 +36,10 @@ function addText(parent, name) {
 }
 
 function addTextInput(parent) {
-  var textInput = $('<input type="text">');
-  parent.append(textInput);
-  $("div").trigger('create');
-  return textInput;
+    var textInput = $('<input type="text">');
+    parent.append(textInput);
+    $("div").trigger('create');
+    return textInput;
 }
 
 function addSlider(parent, id, min, max, value) {
@@ -58,4 +66,14 @@ function addImage(parent, src) {
   var img = $('<img src="' + src + '" />');
   parent.append(img);
   return img;
+}
+
+function addCanvas(parent, width, height) {
+    var canvas = $('<canvas width="' +  width + '" height="' + height + '" style="border:1px solid #000000;"></canvas>')
+    parent.append(canvas)
+    return canvas;
+}
+
+function searchURL() {
+    window.location = "http://www.myurl.com/search/";
 }
