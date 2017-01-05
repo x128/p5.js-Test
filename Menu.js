@@ -1,6 +1,3 @@
-/**
- * Created by new on 03/01/2017.
- */
 class Menu {
     constructor(page) {
         this.page = page;
@@ -10,24 +7,25 @@ class Menu {
         this.self = this;
     }
 
-    onAutoLockClick(self) {
-
-    }
+    //
+    // onAutoLockClick(self) {
+    //
+    // }
 
 
     initMainMenu() {
         this.mainMenu = $('<div></div>');
 
         var mainMenuButtons = {
-            "Password" : false,
-            "AutoLock" : this.onAutoLockClick,
-            "Time" : false,
-            "Date" : false,
-            "ScreenShot" : false,
-            "Screen" : false,
-            "About" : false,
-            "Special features" : false,
-            "Functions" : Menu.onFunctionsClick
+            "Password": false,
+            "AutoLock": this.onAutoLockClick,
+            "Time": false,
+            "Date": false,
+            "ScreenShot": false,
+            "Screen": false,
+            "About": false,
+            "Special features": false,
+            "Functions": Menu.onFunctionsClick
         };
         for (var btnName in mainMenuButtons) {
             this.addMenuButton(this.mainMenu, mainMenuButtons[btnName], btnName);
@@ -57,18 +55,19 @@ class Menu {
         this.page.append(this.secondMenu);
     }
 
-    onSiriClick() {
+    onSiriClick(self) {
 
     }
+
     //
-    onFunctionsClick() {
-        this.secondMenu.show();
-        this.mainMenu.hide();
-    }
+    onFunctionsClick(self) {
+        self.secondMenu.show();
+        self.mainMenu.hide();
+    // }
 
-    onSettingsClick() {
-        this.secondMenu.hide();
-        this.mainMenu.show();
+    onSettingsClick(self) {
+        self.secondMenu.hide();
+        self.mainMenu.show();
     }
 
     addMenuButton(container, onclick, caption, image) {
@@ -81,8 +80,11 @@ class Menu {
             btn = addButton(container, caption);
         }
 
-        btn.parent().click(function() {
-            onclick();
-        });
+        var self = this;
+        btn.parent().click(function () {
+            onclick(self);
+        })
     }
+
 }
+
