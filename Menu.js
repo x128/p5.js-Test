@@ -55,20 +55,23 @@ class Menu {
         this.page.append(this.secondMenu);
     };
 
-    onSiriClick(self) {
 
+
+    onSiriClick(self) {
+        self.secondMenu.hide();
+        self.secondMenu.hide();
     };
 
     //
     onFunctionsClick(self) {
         self.secondMenu.show();
         self.mainMenu.hide();
-    }
+    };
 
     onSettingsClick(self) {
         self.secondMenu.hide();
         self.mainMenu.show();
-    }
+    };
 
     addMenuButton(container, onclick, caption, image) {
 
