@@ -53,40 +53,42 @@ class Menu {
         this.addMenuButton(this.secondMenu, false, "Messages", "messages");
 
         this.page.append(this.secondMenu);
-    };
+    }
 
 
 
     onSiriClick(self) {
         self.secondMenu.hide();
         self.secondMenu.hide();
-    };
+    }
 
     //
     onFunctionsClick(self) {
         self.secondMenu.show();
         self.mainMenu.hide();
-    };
+    }
 
     onSettingsClick(self) {
         self.secondMenu.hide();
         self.mainMenu.show();
-    };
+    }
 
     addMenuButton(container, onclick, caption, image) {
 
         var btn;
+        var self = this;
         if (typeof image !== 'undefined') {
             btn = $('<div class="imgbutton"><img src="img/' + image + '.png" />' + caption + '</div>');
             container.append(btn);
+            btn.click(function(event) {
+                onclick(self);
+            });
         } else {
             btn = addButton(container, caption);
+            btn.parent().click(function(event) {
+                onclick(self);
+            });
         }
-
-        var self = this;
-        btn.parent().click(function () {
-            onclick(self);
-        })
     }
 
 }
