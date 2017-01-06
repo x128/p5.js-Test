@@ -25,7 +25,7 @@ class Menu {
             "Screen": false,
             "About": false,
             "Special features": false,
-            "Functions": Menu.onFunctionsClick
+            "Functions": this.onFunctionsClick
         };
         for (var btnName in mainMenuButtons) {
             this.addMenuButton(this.mainMenu, mainMenuButtons[btnName], btnName);
@@ -53,17 +53,17 @@ class Menu {
         this.addMenuButton(this.secondMenu, false, "Messages", "messages");
 
         this.page.append(this.secondMenu);
-    }
+    };
 
     onSiriClick(self) {
 
-    }
+    };
 
     //
     onFunctionsClick(self) {
         self.secondMenu.show();
         self.mainMenu.hide();
-    // }
+    }
 
     onSettingsClick(self) {
         self.secondMenu.hide();
