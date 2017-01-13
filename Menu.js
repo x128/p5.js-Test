@@ -4,7 +4,7 @@ class Menu {
         this.initMainMenu();
         this.initSecondMenu();
         this.secondMenu.hide();
-        this.self = this;
+        // this.self = this;
     }
 
     //
@@ -38,7 +38,7 @@ class Menu {
         this.secondMenu = $('<div></div>');
 
         this.addMenuButton(this.secondMenu, this.onSettingsClick, "Settings", "Settings copy");
-        this.addMenuButton(this.secondMenu, false, "Calculator", "Calculator");
+        this.addMenuButton(this.secondMenu, this.onCalculatorClick, "Calculator", "Calculator");
         this.addMenuButton(this.secondMenu, false, "Stopwatch", "stopwatch");
         this.addMenuButton(this.secondMenu, false, "Paint", "paint");
         this.addMenuButton(this.secondMenu, false, "Gallery", "Gallery2");
@@ -53,41 +53,52 @@ class Menu {
         this.addMenuButton(this.secondMenu, false, "Messages", "messages");
 
         this.page.append(this.secondMenu);
-    };
+
+    }
 
 
 
     onSiriClick(self) {
         self.secondMenu.hide();
         self.secondMenu.hide();
-    };
+    }
 
-    //
-    onFunctionsClick(self) {
-        self.secondMenu.show();
-        self.mainMenu.hide();
-    };
+    onCalculatorClick(self) {
 
-    onSettingsClick(self) {
-        self.secondMenu.hide();
-        self.mainMenu.show();
-    };
+    }
 
-    addMenuButton(container, onclick, caption, image) {
 
-        var btn;
-        if (typeof image !== 'undefined') {
-            btn = $('<div class="imgbutton"><img src="img/' + image + '.png" />' + caption + '</div>');
-            container.append(btn);
-        } else {
-            btn = addButton(container, caption);
-        }
+//
+onFunctionsClick(self) {
+    self.secondMenu.show();
+    self.mainMenu.hide();
 
-        var self = this;
-        btn.parent().click(function () {
+    }
+
+onSettingsClick(self) {
+    self.secondMenu.hide();
+    self.mainMenu.show();
+    }
+
+addMenuButton(container, onclick, caption, image) {
+
+    var btn;
+    var self = this;
+    if (typeof image !== 'undefined') {
+        btn = $('<div class="imgbutton"><img src="img/' + image + '.png" />' + caption + '</div>');
+        container.append(btn);
+        btn.click(function(event) {
             onclick(self);
-        })
+        });
+    } else {
+        btn = addButton(container, caption);
+        btn.parent().click(function(event) {
+            onclick(self);
+        });
+     }
     }
 
 }
+
+
 
