@@ -4,8 +4,9 @@
 class Phone {
 
     constructor(page) {
-        this.page = page;
         this.menu = new Menu(page);
+        this.homeButton = new HomeButton(page);
+        this.menuBar = new Menubar(page);
     }
 
 
