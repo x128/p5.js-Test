@@ -1,4 +1,5 @@
 function initPage() {
+  $('body').empty();
   var div1 = $('<div data-role="page" class="ui-page ui-page-theme-a ui-page-active">');
   var div2 = $('<div data-role="content" data-theme="a" style="margin: 10px;"></div>');
   $('body').append(div1);
