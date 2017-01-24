@@ -41,3 +41,7 @@ div.homebutton img {
     width: 30px;
     height: 30px;
 }
+
+.ui-content {
+    padding: 0;
+}
