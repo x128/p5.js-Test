@@ -2,7 +2,7 @@ html {
     background: url("iPhone_5S.svg") no-repeat fixed;
     background-size: 300px 630px;
     background-position: center;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 body {
@@ -61,4 +61,29 @@ div.homebutton img {
 .in, .out {
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-duration: 750ms !important;
+}
+
+
+@media screen and (max-width: 500px) {
+    html {
+        background: none;
+        background-size: auto;
+    }
+
+    body {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0;
+        left: 0;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .ui-mobile-viewport-transitioning div.ui-page {
+        width: 100%;
+    }
+
+    div.ui-page-active {
+        min-height: 100% !important;
+    }
 }
