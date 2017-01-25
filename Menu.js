@@ -1,19 +1,23 @@
 class Menu {
-    constructor(page) {
-        this.page = page;
-        this.initMainMenu();
-        this.initSecondMenu();
+    constructor() {
+        this.page1 = addPage('page1');
+        this.page2 = addPage('page2')
+
+        new Menubar(this.page1);
+        new Menubar(this.page2);
+        
+        this.initMainMenu(this.page1);
+        this.initSecondMenu(this.page2);
         this.secondMenu.hide();
-        // this.self = this;
+
+        new HomeButton(this.page2, 'page1', 'page2');
+        new HomeButton(this.page1, 'page1', 'page2');
+
+        switchPage('page1', { transition: 'none' });
     }
 
-    //
-    // onAutoLockClick(self) {
-    //
-    // }
 
-
-    initMainMenu() {
+    initMainMenu(parent) {
         this.mainMenu = $('<div></div>');
 
         var mainMenuButtons = {
@@ -31,10 +35,10 @@ class Menu {
             this.addMenuButton(this.mainMenu, mainMenuButtons[btnName], btnName);
         }
 
-        this.page.append(this.mainMenu)
+        parent.append(this.mainMenu)
     }
 
-    initSecondMenu() {
+    initSecondMenu(parent) {
         this.secondMenu = $('<div></div>');
 
         this.addMenuButton(this.secondMenu, this.onSettingsClick, "Settings", "Settings copy");
@@ -52,7 +56,7 @@ class Menu {
         this.addMenuButton(this.secondMenu, false, "Calendar", "calendar");
         this.addMenuButton(this.secondMenu, false, "Messages", "messages");
 
-        this.page.append(this.secondMenu);
+        parent.append(this.secondMenu);
 
     }
 
@@ -69,15 +73,16 @@ class Menu {
 
 
 //
-onFunctionsClick(self) {
-    self.secondMenu.show();
-    self.mainMenu.hide();
-
+    onFunctionsClick(self) {
+        // self.secondMenu.show();
+        // self.mainMenu.hide();
+        switchPage('page2', { transition: 'flow'});
     }
 
-onSettingsClick(self) {
-    self.secondMenu.hide();
-    self.mainMenu.show();
+
+    onSettingsClick(self) {
+        self.secondMenu.hide();
+        self.mainMenu.show();
     }
 
 addMenuButton(container, onclick, caption, image) {

@@ -3,12 +3,33 @@
  */
 class Phone {
 
-    constructor(page) {
-        this.menu = new Menu(page);
-        this.homeButton = new HomeButton(page);
-        this.menuBar = new Menubar(page);
+    // constructor() {
+    //
+    //
+    //     this.menuBar = new Menubar();
+    //     this.homeButton = new HomeButton(this.menu);
+    // }
+
+    constructor() {
+        initBody();
+        this.menu = new Menu();
+
+        // addPageTransitionButton(page1, 'goto 2', 'page2', { transition : 'flow' });
+
+
+        // addPageTransitionButton(page2, 'back to 1', 'page1', { transition : 'flow', reverse : true });
+        // switchPage('page1', {transition: 'none'});
+
+
     }
 
 
+
 }
+
+
+
+
+
+
 

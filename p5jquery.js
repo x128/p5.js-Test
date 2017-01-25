@@ -1,12 +1,3 @@
-function initPage() {
-  $('body').empty();
-  var div1 = $('<div data-role="page" class="ui-page ui-page-theme-a ui-page-active">');
-  var div2 = $('<div data-role="content" data-theme="a" style="margin: 10px;"></div>');
-  $('body').append(div1);
-  div1.append(div2);
-  return div2;
-}
-
 function addButton(parent, name) {
   var btn = $('<a data-theme="a">' + name + "</a>");
   parent.append(btn);
@@ -78,3 +69,28 @@ function addCanvas(parent, width, height) {
 function searchURL() {
     window.location = "http://www.myurl.com/search/";
 }
+
+function initBody() {
+    $('body').empty();
+}
+
+function addPage(id) {
+    var div1 = $('<div data-role="page" class="ui-page ui-page-theme-a" id="' + id + '">');
+    var div2 = $('<div data-role="content" data-theme="a" style="margin: 10px;"></div>');
+    $('body').append(div1);
+    div1.append(div2);
+    return div2;
+}
+
+function addPageTransitionButton(parent, label, target, options) {
+    var btn = addButton(parent, label);
+    btn.parent().click(function(event) {
+        switchPage(target, options);
+    });
+}
+
+function switchPage(id, options) {
+    $.mobile.changePage('#' + id, options);
+}
+
+

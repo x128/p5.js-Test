@@ -8,12 +8,12 @@ html {
 body {
     position: absolute;
     overflow: auto !important;
-    width: 251px;
+    width: 251px !important;
     height: 446px !important;
     top: 50%;
     left: 50%;
     margin: -224px 0 0 -127px !important;
-    background-color: white;
+    background-color: lightgray !important;
     padding: 3px;
 }
 
@@ -22,8 +22,8 @@ div {
 }
 
 .ui-mobile .ui-page-active {
-    background-color: transparent;
     overflow: hidden;
+    background-color: whitesmoke;
 }
 
 div.ui-page-active {
@@ -38,6 +38,60 @@ div.homebutton {
 }
 
 div.homebutton img {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    left: 100px;
+    top: 0px;
 }
+
+div.homebutton img:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.ui-content {
+    padding: 0;
+}
+
+.ui-body-a {
+    background-color: transparent;
+}
+
+.ui-mobile-viewport-transitioning div.ui-page {
+    width: 257px;
+}
+
+.ui-mobile-viewport-transitioning, .ui-mobile-viewport-transitioning .ui-page {
+    -webkit-box-sizing: content-box;
+}
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 750ms !important;
+}
+
+@media screen and (max-width: 500px) {
+    html {
+        background: none;
+        background-size: auto;
+    }
+
+    body {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0;
+        left: 0;
+        margin: 0 !important;
+        padding: 0;
+    }
+
+    .ui-mobile-viewport-transitioning div.ui-page {
+        width: 100%;
+    }
+
+    div.ui-page-active {
+        min-height: 100% !important;
+    }
+}
+
