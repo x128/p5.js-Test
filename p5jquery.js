@@ -10,12 +10,16 @@ function addPage(id) {
     return div2;
 }
 
-function addPageTransitionButton(parent, label, target, effect) {
+function addPageTransitionButton(parent, label, target, options) {
     var btn = addButton(parent, label);
-    btn.css('data-transition', effect);
     btn.parent().click(function(event) {
-        $.mobile.changePage('#' + target);
+        switchPage(target, options);
     });
+}
+
+// Possible options: http://api.jquerymobile.com/jquery.mobile.changepage/
+function switchPage(id, options) {
+    $.mobile.changePage('#' + id, options);
 }
 
 function addButton(parent, name) {

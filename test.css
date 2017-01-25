@@ -8,7 +8,7 @@ html {
 body {
     position: absolute;
     overflow: auto !important;
-    width: 251px;
+    width: 251px !important;
     height: 446px !important;
     top: 50%;
     left: 50%;
@@ -44,4 +44,21 @@ div.homebutton img {
 
 .ui-content {
     padding: 0;
+}
+
+.ui-body-a {
+    background-color: transparent;
+}
+
+.ui-mobile-viewport-transitioning div.ui-page {
+    width: 257px;
+}
+
+.ui-mobile-viewport-transitioning, .ui-mobile-viewport-transitioning .ui-page {
+    -webkit-box-sizing: content-box;
+}
+
+.in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 250ms !important;
 }
