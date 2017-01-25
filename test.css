@@ -13,7 +13,7 @@ body {
     top: 50%;
     left: 50%;
     margin: -224px 0 0 -127px !important;
-    background-color: white;
+    background-color: lightgray !important;
     padding: 3px;
 }
 
@@ -22,7 +22,7 @@ div {
 }
 
 .ui-mobile .ui-page-active {
-    background-color: transparent;
+    background-color: whitesmoke;
     overflow: hidden;
 }
 
@@ -60,5 +60,5 @@ div.homebutton img {
 
 .in, .out {
     -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 250ms !important;
+    -webkit-animation-duration: 750ms !important;
 }
