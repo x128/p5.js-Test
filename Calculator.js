@@ -3,9 +3,13 @@
  */
 class Calculator {
 
-    constructor(ID, homePageId, functionsId, menu) {
+    constructor(ID, menu) {
+       var homePageId = menu.getMainMenuId();
+       var functionsId = menu.getSecondMenuId();
+
        this.page = addPage(ID);
        this.id = ID;
+
        new HomeButton(this.page, homePageId, functionsId, menu);
        new Menubar(this.page);
        this.calculator_box = addTextInput(this.page);

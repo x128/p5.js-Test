@@ -3,7 +3,7 @@ class Menu {
         this.page1 = addPage('page1');
         this.page2 = addPage('page2');
 
-        this.calculator = new Calculator('calculPage', 'page1', 'page2', this);
+        this.calculator = new Calculator('calculPage', this);
 
         //this.calculatorPage = addPage('calculPage');
         //new HomeButton(this.calculatorPage, 'page1', 'page2', this);

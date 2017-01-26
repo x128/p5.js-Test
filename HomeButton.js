@@ -1,12 +1,8 @@
 class HomeButton {
-    constructor(page, menu) {
+    constructor(page, homePageId, functionsId, menu) {
         var homeButton = $('<div class="homebutton"></div>');
         var self = this;
         var dblClick = false;
-        var homePageId, functionsId;
-
-        homePageId = menu.getMainMenuId();
-        functionsId = menu.getSecondMenuId();
 
         homeButton.dblclick(function () {
             dblClick = true;
