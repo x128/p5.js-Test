@@ -1,17 +1,24 @@
 class Menu {
     constructor() {
         this.page1 = addPage('page1');
-        this.page2 = addPage('page2')
+        this.page2 = addPage('page2');
+
+        this.calculator = new Calculator('calculPage', 'page1', 'page2', this);
+
+        //this.calculatorPage = addPage('calculPage');
+        //new HomeButton(this.calculatorPage, 'page1', 'page2', this);
+
+        //this.siriPage = addPage('siriPage');
+        //new HomeButton(this.siriPage, 'page1', 'page2', this);
 
         new Menubar(this.page1);
         new Menubar(this.page2);
         
         this.initMainMenu(this.page1);
         this.initSecondMenu(this.page2);
-        this.secondMenu.hide();
 
-        new HomeButton(this.page2, 'page1', 'page2');
-        new HomeButton(this.page1, 'page1', 'page2');
+        new HomeButton(this.page2, 'page1', 'page2', this);
+        new HomeButton(this.page1, 'page1', 'page2', this);
 
         switchPage('page1', { transition: 'none' });
     }
@@ -35,7 +42,7 @@ class Menu {
             this.addMenuButton(this.mainMenu, mainMenuButtons[btnName], btnName);
         }
 
-        parent.append(this.mainMenu)
+        parent.append(this.mainMenu);
     }
 
     initSecondMenu(parent) {
@@ -63,26 +70,23 @@ class Menu {
 
 
     onSiriClick(self) {
-        self.secondMenu.hide();
-        self.secondMenu.hide();
+       //switchPage('siriPage', { transition: 'flow'});
     }
 
     onCalculatorClick(self) {
+        switchPage(self.calculator.id, { transition: 'flow'});
 
     }
 
 
 //
     onFunctionsClick(self) {
-        // self.secondMenu.show();
-        // self.mainMenu.hide();
-        switchPage('page2', { transition: 'flow'});
+        switchPage('page2', { transition: 'slideup'});
     }
 
 
     onSettingsClick(self) {
-        self.secondMenu.hide();
-        self.mainMenu.show();
+        switchPage('page1', { transition: 'pop'});
     }
 
 addMenuButton(container, onclick, caption, image) {
