@@ -1,8 +1,12 @@
 class HomeButton {
-    constructor(page, homePageId, functionsId, menu) {
+    constructor(page, menu) {
         var homeButton = $('<div class="homebutton"></div>');
         var self = this;
         var dblClick = false;
+        var homePageId, functionsId;
+
+        homePageId = menu.getMainMenuId();
+        functionsId = menu.getSecondMenuId();
 
         homeButton.dblclick(function () {
             dblClick = true;
@@ -23,11 +27,6 @@ class HomeButton {
                 }
             }, 200);
         });
-
-
-        // var activePage = $.mobile.activePage;
-        // console.log(activePage.id);
-
 
         addImage(homeButton, 'img/home-button.png');
         page.append(homeButton);

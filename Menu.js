@@ -19,10 +19,15 @@ class Menu {
 
         new HomeButton(this.page2, 'page1', 'page2', this);
         new HomeButton(this.page1, 'page1', 'page2', this);
-
-        switchPage('page1', { transition: 'none' });
     }
 
+    getMainMenuId() {
+       return 'page1';
+    }
+
+    getSecondMenuId() {
+       return 'page2';
+    }
 
     initMainMenu(parent) {
         this.mainMenu = $('<div></div>');

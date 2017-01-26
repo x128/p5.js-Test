@@ -8,7 +8,10 @@ class Calculator {
        this.id = ID;
        new HomeButton(this.page, homePageId, functionsId, menu);
        new Menubar(this.page);
-       calculator_box = addTextInput(this.page)
+       this.calculator_box = addTextInput(this.page);
+       this.calculator_box.css({
+           width: '100px'
+       })
     }
 
 }
