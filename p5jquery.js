@@ -65,8 +65,8 @@ function addSlider(parent, id, min, max, value) {
   return btn;
 }
 
-function addCheckbox(parent, caption) {
-  var input = $('<input type="checkbox">');
+function addCheckbox(parent, id, caption) {
+  var input = $('<input type="checkbox" id="' + id + '">');
   var label = $('<label>' + caption + '</label>');
   label.append(input);
   parent.append(label);
@@ -76,6 +76,14 @@ function addCheckbox(parent, caption) {
 
 function inputValue(id) {
   return $('#' + id).val();
+}
+
+function setSliderValue(id, value) {
+    $('#' + id).val(value).slider('refresh');
+}
+
+function setCheckboxValue(id, value) {
+    $('#' + id).prop('checked', value).checkboxradio('refresh');
 }
 
 function addImage(parent, src) {
