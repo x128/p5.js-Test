@@ -6,15 +6,11 @@ class Phone {
     constructor() {
         initBody();
         this.menu = new Menu();
-        switchPage('page1', { transition: 'none' });
+        switchPage(this.menu.offPage.id, {transition: 'none'});
     }
 
 
-
 }
-
-
-
 
 
 

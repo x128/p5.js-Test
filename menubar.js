@@ -8,11 +8,24 @@ class Menubar {
         this.minutes = 0;
         this.seconds = 0;
 
-        this.txtTime = addText(page, this.hours + " : " + this.minutes + " : " + this.seconds)
+        var self = this;
+
+        this.txtTime = addText(page, this.hours + " : " + this.minutes + " : " + this.seconds);
         this.txtTime.css({
             height: '40px'
         });
 
+        var updateTick = function() {
+            // self.seconds = self.second();
+            // self.minutes = self.minute();
+            // self.hours = self.hour();
+
+
+            self.txtTime.text(p5.prototype.hour() + "   :   " + p5.prototype.minute() + "   :   " + p5.prototype.second());
+            setTimeout(updateTick, 1000);
+        };
+
+        updateTick();
 
     }
 

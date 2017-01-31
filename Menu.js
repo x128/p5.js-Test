@@ -3,13 +3,13 @@ class Menu {
         this.page1 = addPage('page1');
         this.page2 = addPage('page2');
 
+        this.password = new Password('password', this);
+        this.autoLock = new AutoLock('lock', this);
+
         this.calculator = new Calculator('calculPage', this);
+        this.stopwatch = new Stopwatch('Stopwatch', this);
 
-        //this.calculatorPage = addPage('calculPage');
-        //new HomeButton(this.calculatorPage, 'page1', 'page2', this);
-
-        //this.siriPage = addPage('siriPage');
-        //new HomeButton(this.siriPage, 'page1', 'page2', this);
+        this.offPage = new OffPage(this);
 
         new Menubar(this.page1);
         new Menubar(this.page2);
@@ -33,7 +33,7 @@ class Menu {
         this.mainMenu = $('<div></div>');
 
         var mainMenuButtons = {
-            "Password": false,
+            "Password": this.onPasswordClick,
             "AutoLock": this.onAutoLockClick,
             "Time": false,
             "Date": false,
@@ -55,7 +55,7 @@ class Menu {
 
         this.addMenuButton(this.secondMenu, this.onSettingsClick, "Settings", "Settings copy");
         this.addMenuButton(this.secondMenu, this.onCalculatorClick, "Calculator", "Calculator");
-        this.addMenuButton(this.secondMenu, false, "Stopwatch", "stopwatch");
+        this.addMenuButton(this.secondMenu, this.onStopwatchClick, "Stopwatch", "stopwatch");
         this.addMenuButton(this.secondMenu, false, "Paint", "paint");
         this.addMenuButton(this.secondMenu, false, "Gallery", "Gallery2");
         this.addMenuButton(this.secondMenu, false, "Playmarket", "playmarket1");
@@ -72,7 +72,18 @@ class Menu {
 
     }
 
+    onStopwatchClick(self) {
+        switchPage(self.stopwatch.id, { transition: 'flow'});
+    }
 
+
+    onPasswordClick(self) {
+        switchPage(self.password.id, { transition: 'flip'});
+    }
+
+    onAutoLockClick(self) {
+        switchPage(self.autoLock.id, { transition: 'flip'});
+    }
 
     onSiriClick(self) {
        //switchPage('siriPage', { transition: 'flow'});
@@ -80,11 +91,8 @@ class Menu {
 
     onCalculatorClick(self) {
         switchPage(self.calculator.id, { transition: 'flow'});
-
     }
 
-
-//
     onFunctionsClick(self) {
         switchPage('page2', { transition: 'slideup'});
     }
@@ -113,6 +121,5 @@ addMenuButton(container, onclick, caption, image) {
     }
 
 }
-
 
 

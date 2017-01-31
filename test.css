@@ -14,8 +14,6 @@ body {
     left: 50%;
     margin: -224px 0 0 -127px !important;
     background-color: lightgray !important;
-    /*background-color: white;*/
-
     padding: 3px;
 }
 
@@ -97,3 +95,12 @@ div.homebutton img:hover {
     }
 }
 
+.ui-corner-all {
+    -webkit-border-radius: 0.7925em;
+    border-radius: 0.7925em;
+}
+
+.ui-btn-corner-all, .ui-btn.ui-corner-all, .ui-slider-track.ui-corner-all, .ui-flipswitch.ui-corner-all, .ui-li-count {
+    -webkit-border-radius: 0.7025em;
+    border-radius: 0.7025em;
+}

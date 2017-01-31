@@ -7,7 +7,7 @@ class HomeButton {
         homeButton.dblclick(function () {
             dblClick = true;
 
-            if (page == menu.page1) {
+            if (page == menu.page1 || page == menu.password.page || page == menu.autoLock.page) {
                 switchPage(functionsId, { transition: 'slideup'});
             } else {
                 switchPage(functionsId, { transition: 'flow', reverse: true});
@@ -19,7 +19,11 @@ class HomeButton {
 
             setTimeout(function () {
                 if (dblClick == false) {
-                    switchPage(homePageId, {transition: 'slideup', reverse: true});
+                    if (page == menu.page2 || page == menu.calculator.page || page == menu.stopwatch.page) {
+                        switchPage(homePageId, {transition: 'slideup', reverse: true});
+                    } else {
+                        switchPage(homePageId, {transition: 'flip', reverse: true});
+                    }
                 }
             }, 200);
         });

@@ -35,10 +35,10 @@ function addTextInput(parent) {
 }
 
 function addSlider(parent, id, min, max, value) {
-  var btn = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
-  parent.append(btn);
-  $("div").trigger('create');
-  return btn;
+    var btn = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
+    parent.append(btn);
+    $("div").trigger('create');
+    return btn;
 }
 
 function addCheckbox(parent, caption) {
@@ -93,4 +93,14 @@ function switchPage(id, options) {
     $.mobile.changePage('#' + id, options);
 }
 
+function sliderValue(id) {
+    return $('#' + id).val();
+}
 
+function sliderValueTo(id, value) {
+    $('#' + id).val(value);
+}
+
+function hideSlider(id) {
+    $('#' + id).hide();
+}

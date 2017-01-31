@@ -189,7 +189,8 @@
 //     })
 //
 //
-//     chbox_show_stopwatch_time.click(function(event) {
+//
+//    chbox_show_stopwatch_time.click(function(event) {
 //       var checked = chbox_show_stopwatch_time.prop('checked');
 //       if (checked) {
 //         // show_stopwatch_time = true;
