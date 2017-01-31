@@ -17,7 +17,7 @@ class Phone {
         new Menu(page2);
         new HomeButton(page2); // FIXME: non-reusable shit?
 
-        switchPage('first', {});
+        switchPage('first', { transition: 'none' });
     }
 
 
