@@ -7,6 +7,7 @@ class Phone {
         initBody();
         this.menu = new Menu();
         switchPage(this.menu.offPage.id, {transition: 'none'});
+
     }
 
 

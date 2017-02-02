@@ -17,23 +17,29 @@ class AutoLock {
 
        var self = this;
 
-       this.chboxlockActive = addCheckbox(this.page, 'Autolock active');
+       this.chboxlockActive = addCheckbox(this.page, 'autolock' ,'Autolock active');
+       setCheckboxValue('autolock', false);
 
        this.txtToSlider = addText(this.page, 'Minutes before lock');
+       this.txtToSlider.hide();
+
        this.txtToSlider.css({
            color: 'blue'
        });
 
        this.timeBeforeLock = addSlider(this.page, 'Slider', 1, 10, 1);
+       $('#Slider').parent().hide();
 
-        this.chboxlockActive.click(function(event) {
-            var checked = self.chboxlockActive.prop('checked');
-            if (checked) {
-                self.txtToSlider.show();
-            } else {
-                self.txtToSlider.hide();
-            }
-        });
+       this.chboxlockActive.click(function(event) {
+           var checked = self.chboxlockActive.prop('checked');
+           if (checked) {
+               self.txtToSlider.show();
+               $('#Slider').parent().show();
+           } else {
+               self.txtToSlider.hide();
+               $('#Slider').parent().hide();
+           }
+       });
 
 
     }

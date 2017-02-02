@@ -15,22 +15,13 @@ class OffPage {
         hideSlider('lockSlider');
         var self = this;
 
-        // this.sliderUnLock.mousedown(function() {
-            var update = function () {
+        $('#lockSlider').change(function(event) {
                 if (sliderValue('lockSlider') == 100) {
                     switchPage(menu.getMainMenuId(), {transition: 'fade'});
-                    //sliderValueTo('lockSlider', 0);
-                    this.sliderUnLock.value(0);
+                    setSliderValue('lockSlider', 0);
                 }
 
-                console.log(sliderValue('lockSlider'));
-
-                setTimeout(update, 1)
-            };
-
-
-        update();
-        // })
+        })
     }
 
 }

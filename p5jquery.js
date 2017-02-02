@@ -41,13 +41,13 @@ function addSlider(parent, id, min, max, value) {
     return btn;
 }
 
-function addCheckbox(parent, caption) {
-  var input = $('<input type="checkbox">');
-  var label = $('<label>' + caption + '</label>');
-  label.append(input);
-  parent.append(label);
-  $("label").trigger('create');
-  return input;
+function addCheckbox(parent, id, caption) {
+    var input = $('<input type="checkbox" id="' + id + '">');
+    var label = $('<label>' + caption + '</label>');
+    label.append(input);
+    parent.append(label);
+    $("label").trigger('create');
+    return input;
 }
 
 function inputValue(id) {
@@ -97,10 +97,14 @@ function sliderValue(id) {
     return $('#' + id).val();
 }
 
-function sliderValueTo(id, value) {
-    $('#' + id).val(value);
-}
-
 function hideSlider(id) {
     $('#' + id).hide();
+}
+
+function setSliderValue(id, value) {
+    $('#' + id).val(value).slider('refresh');
+}
+
+function setCheckboxValue(id, value) {
+    $('#' + id).prop('checked', value).checkboxradio('refresh');
 }
