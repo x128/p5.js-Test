@@ -21,7 +21,7 @@ div {
   min-height: 0 !important;
 }
 
-.ui-mobile .ui-page-active {
+.ui-mobile.ui-page-active {
     overflow: hidden;
     background-color: whitesmoke;
 }
@@ -103,4 +103,12 @@ div.homebutton img:hover {
 .ui-btn-corner-all, .ui-btn.ui-corner-all, .ui-slider-track.ui-corner-all, .ui-flipswitch.ui-corner-all, .ui-li-count {
     -webkit-border-radius: 0.7025em;
     border-radius: 0.7025em;
+}
+
+#lockSlider {
+    display: none;
+}
+
+#lockSlider + div {
+    left: -23px;
 }

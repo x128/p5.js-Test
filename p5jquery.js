@@ -97,7 +97,7 @@ function sliderValue(id) {
     return $('#' + id).val();
 }
 
-function hideSlider(id) {
+function hideSliderLeftPart(id) {
     $('#' + id).hide();
 }
 

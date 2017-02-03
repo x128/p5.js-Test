@@ -12,7 +12,6 @@ class OffPage {
            fontSize: '20px'
         });
         this.sliderUnLock = addSlider(this.page, 'lockSlider', 0, 100, 0);
-        hideSlider('lockSlider');
         var self = this;
 
         $('#lockSlider').change(function(event) {
@@ -21,7 +20,7 @@ class OffPage {
                     setSliderValue('lockSlider', 0);
                 }
 
-        })
+        });
     }
 
 }

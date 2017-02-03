@@ -17,7 +17,6 @@ class Password {
         });
 
         this.chboxPasswordIs = addCheckbox(this.page, 'pass', 'Ask for password');
-        setCheckboxValue('pass', true);
         this.txtNoPassword = addText(this.page, 'No password.');
         this.txtNoPassword.css({
            color: 'blue'

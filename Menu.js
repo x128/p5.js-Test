@@ -19,6 +19,28 @@ class Menu {
 
         new HomeButton(this.page2, 'page1', 'page2', this);
         new HomeButton(this.page1, 'page1', 'page2', this);
+
+        this.timeBeforeLock = this.autoLock.minBeforeLock;
+        this.secNoMove = 0;
+
+
+        var Self = this;
+
+        var timerNoMove = function() {
+            Self.secNoMove ++;
+            if (Self.autoLock.chboxlockActive.prop('checked') == true) {
+                if (Self.secNoMove == Self.timeBeforeLock) {
+                    switchPage(Self.offPage.id, {transition: 'fade'});
+                }
+            }
+            setTimeout(timerNoMove, 1000);
+        };
+
+        timerNoMove();
+
+        $('body').mousemove(function(event) {
+            Self.secNoMove = 0;
+        });
     }
 
     getMainMenuId() {

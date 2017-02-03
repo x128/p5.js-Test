@@ -63,7 +63,7 @@ class Stopwatch {
 
                 self.milliseconds ++;
 
-                if (self.milliseconds >= 100) {
+                if (self.milliseconds >= 1000) {
                     self.milliseconds = 0;
                     self.seconds++;
                 }
@@ -80,7 +80,7 @@ class Stopwatch {
 
                 self.txt_stopwatch_time.text(self.hours + "   :   " + self.minutes + "   :   " + self.seconds + " : " + self.milliseconds);
 
-                setTimeout(updateTick, 10)
+                setTimeout(updateTick, 1)
             }
         };
 
