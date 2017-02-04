@@ -56,6 +56,7 @@ class Menu {
 
         var mainMenuButtons = {
             "Password": this.onPasswordClick,
+            "pattern & slider": false,
             "AutoLock": this.onAutoLockClick,
             "Time": false,
             "Date": false,
