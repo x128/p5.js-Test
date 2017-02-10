@@ -1,17 +1,13 @@
 /**
  * Created by new on 26/01/2017.
  */
-class Stopwatch {
+class StopwatchView {
 
-    constructor(ID, menu) {
-        this.page = addPage(ID);
-        this.id = ID;
+    constructor(id, menu) {
+        this.page = addPage(id);
+        this.id = id;
 
-        this.isRunning = false;
-        this.minutes = 0;
-        this.seconds = 0;
-        this.hours = 0;
-        this.milliseconds = 0;
+        this.stopwatch = new Stopwatch();
 
         var homePageId = menu.getMainMenuId();
         var functionsId = menu.getSecondMenuId();
@@ -19,77 +15,102 @@ class Stopwatch {
         new HomeButton(this.page, homePageId, functionsId, menu);
         new Menubar(this.page);
 
-        this.txt_stopwatch_time = addText(this.page, this.hours + "   :   " + this.minutes + "   :   " + this.seconds + " : " + this.milliseconds);
-        this.txt_stopwatch_time.css({
-            fontSize: '35px'
-        });
+        this.txtTime = addText(this.page);
 
-        var self = this;
-        this.btn_run = addButton(this.page, 'Start');
-        this.btn_reset = addButton(this.page, 'Reset');
-        this.btn_run.parent().click(function() {
-                if (self.btn_run.text() == "Start") {
-                    self.isRunning = true;
-                    self.btn_run.text("Stop");
-                } else if (self.btn_run.text() == "Stop") {
-                    self.isRunning = false;
-                    self.btn_run.text("Resume");
-                } else if (self.btn_run.text() == "Resume") {
-                    self.isRunning = true;
-                    self.btn_run.text("Stop");
-                }
-            self.checkForRunning(self);
-        });
+        this.btnStart = addButton(this.page, 'Start', this, this.onStartClick);
+        this.btnStop = addButton(this.page, 'Pause', this, this.onStopClick);
+        this.btnReset = addButton(this.page, 'Reset', this, this.onResetClick);
 
-        this.btn_reset.parent().click(function() {
-            self.isRunning = false;
-            self.btn_run.text("Start");
-            self.minutes = 0;
-            self.seconds = 0;
-            self.hours = 0;
-            self.milliseconds = 0;
-            self.checkForRunning(self);
-            self.txt_stopwatch_time.text(self.hours + "   :   " + self.minutes + "   :   " + self.seconds + " : " + self.milliseconds);
-        });
-
-
-    };
-
-
-    checkForRunning(self) {
-        var updateTick = function() {
-
-            if (self.isRunning) {
-
-                self.milliseconds ++;
-
-                if (self.milliseconds >= 1000) {
-                    self.milliseconds = 0;
-                    self.seconds++;
-                }
-
-                if (self.seconds >= 60) {
-                    self.minutes++;
-                    self.seconds = 0;
-                }
-
-                if (self.minutes >= 60) {
-                    self.hours++;
-                    self.minutes = 0;
-                }
-
-                self.txt_stopwatch_time.text(self.hours + "   :   " + self.minutes + "   :   " + self.seconds + " : " + self.milliseconds);
-
-                setTimeout(updateTick, 1)
-            }
-        };
-
-
-        updateTick();
-
-
-
+        this.initUI();
+        this.updateView();
     }
 
+    updateView() {
+        var txt = this.formattedValue();
+        this.txtTime.text(txt);
+
+        switch (this.stopwatch.state) {
+            case StopwatchState.Zero:
+                showButton(this.btnStart, 'Start');
+                hideButton(this.btnStop);
+                hideButton(this.btnReset);
+                break;
+            case StopwatchState.Running:
+                hideButton(this.btnStart);
+                showButton(this.btnStop);
+                hideButton(this.btnReset);
+                break;
+            case StopwatchState.Paused:
+                showButton(this.btnStart, 'Resume');
+                hideButton(this.btnStop);
+                showButton(this.btnReset);
+                break;
+            default:
+                throw "wtf state";
+        }
+
+        setTimeout(function(self) {
+            self.updateView();
+        }, 50, this);
+    }
+
+    onStartClick(self) {
+        self.stopwatch.start();
+    }
+
+    onStopClick(self) {
+        self.stopwatch.stop();
+    }
+
+    onResetClick(self) {
+        self.stopwatch.reset();
+    }
+
+    initUI() {
+        this.txtTime.css({
+            fontSize: '35px'
+        });
+    }
+
+    formattedValue() {
+        var ms = this.stopwatch.getMs();
+        var formattedMs = millisecondsToTime(ms);
+        return formattedMs;
+    }
 }
 
+const StopwatchState = {
+    Zero: 0,
+    Running: 1,
+    Paused: 2,
+};
+
+class Stopwatch {
+    constructor() {
+        this.state = StopwatchState.Zero;
+        this.ms = 0;
+        this.startMs = 0;
+    }
+
+    start() {
+        this.state = StopwatchState.Running;
+        this.startMs = getTimestampMs() - this.ms; // dirty hack
+    }
+
+    stop() {
+        this.state = StopwatchState.Paused;
+        this.ms = getTimestampMs() - this.startMs;
+    }
+
+    reset() {
+        this.state = StopwatchState.Zero;
+        this.ms = 0;
+    }
+
+    getMs() {
+        if (this.state == StopwatchState.Running) {
+            this.ms = getTimestampMs() - this.startMs;
+        }
+        return this.ms;
+    }
+}

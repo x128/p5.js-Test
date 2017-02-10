@@ -7,7 +7,7 @@ class HomeButton {
         homeButton.dblclick(function () {
             dblClick = true;
 
-            if (page == menu.page1 || page == menu.password.page || page == menu.autoLock.page) {
+            if (page == menu.page1 || page == menu.password.page || page == menu.autoLock.page || page == menu.time.page || page == menu.date.page || page == menu.pattern.page) {
                 switchPage(functionsId, { transition: 'slideup'});
             } else {
                 switchPage(functionsId, { transition: 'flow', reverse: true});

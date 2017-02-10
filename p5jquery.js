@@ -1,12 +1,20 @@
-function addButton(parent, name) {
+function addButton(parent, name, tipaSelf, onClick) {
   var btn = $('<a data-theme="a">' + name + "</a>");
   parent.append(btn);
   btn.button();
+  if (tipaSelf && onClick) {
+      btn.parent().click(function() {
+          onClick(tipaSelf);
+      });
+  }
   return btn;
 }
 
-function showButton(btn) {
+function showButton(btn, text) {
   btn.parent().show();
+  if (text) {
+      btn.text(text);
+  }
 }
 
 function hideButton(btn) {
@@ -34,11 +42,18 @@ function addTextInput(parent) {
     return textInput;
 }
 
-function addSlider(parent, id, min, max, value) {
-    var btn = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
-    parent.append(btn);
+function addSlider(parent, id, min, max, value, target, onChange) {
+    var slider = $('<input type="range" id="' + id + '" value="' + value + '" min="' + min + '" max="' + max + '" data-theme="a" />');
+    parent.append(slider);
     $("div").trigger('create');
-    return btn;
+
+    if (target && onChange) {
+        $('#' + id).change(function(event) {
+            onChange(target, event);
+        });
+    }
+
+    return slider;
 }
 
 function addCheckbox(parent, id, caption) {
@@ -90,6 +105,8 @@ function addPageTransitionButton(parent, label, target, options) {
 }
 
 function switchPage(id, options) {
+    console.log("switchPage " + id, options);
+    console.log(new Error().stack);
     $.mobile.changePage('#' + id, options);
 }
 

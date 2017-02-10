@@ -68,7 +68,7 @@ div.homebutton img:hover {
 
 .in, .out {
     -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 750ms !important;
+    -webkit-animation-duration: 600ms !important;
 }
 
 @media screen and (max-width: 500px) {

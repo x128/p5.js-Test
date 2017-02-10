@@ -4,12 +4,15 @@ class Menu {
         this.page2 = addPage('page2');
 
         this.password = new Password('password', this);
-        this.autoLock = new AutoLock('lock', this);
+        this.autoLock = new AutoLockView('lock', this);
+        this.date = new DateView('date' ,this);
+        this.time = new TimeView('time', this);
+        this.pattern = new PatternView('pattern', this);
 
         this.calculator = new Calculator('calculPage', this);
-        this.stopwatch = new Stopwatch('Stopwatch', this);
+        this.stopwatch = new StopwatchView('Stopwatch', this);
 
-        this.offPage = new OffPage(this);
+        this.offPage = new OffPageView(this);
 
         new Menubar(this.page1);
         new Menubar(this.page2);
@@ -28,7 +31,7 @@ class Menu {
 
         var timerNoMove = function() {
             Self.secNoMove ++;
-            if (Self.autoLock.chboxlockActive.prop('checked') == true) {
+            if (Self.autoLock.autolock.active) {
                 if (Self.secNoMove == Self.timeBeforeLock) {
                     switchPage(Self.offPage.id, {transition: 'fade'});
                 }
@@ -39,6 +42,7 @@ class Menu {
         timerNoMove();
 
         $('body').mousemove(function(event) {
+            var autolock = new AutoLock();
             Self.secNoMove = 0;
         });
     }
@@ -56,10 +60,10 @@ class Menu {
 
         var mainMenuButtons = {
             "Password": this.onPasswordClick,
-            "pattern & slider": false,
+            "pattern & slider": this.onPatternClick,
             "AutoLock": this.onAutoLockClick,
-            "Time": false,
-            "Date": false,
+            "Time": this.onTimeClick,
+            "Date": this.onDateClick,
             "ScreenShot": false,
             "Screen": false,
             "About": false,
@@ -123,6 +127,18 @@ class Menu {
 
     onSettingsClick(self) {
         switchPage('page1', { transition: 'pop'});
+    }
+
+    onTimeClick(self) {
+        switchPage('time', { transition: 'flip'});
+    }
+
+    onDateClick() {
+        switchPage('date', { transition: 'flip'});
+    }
+
+    onPatternClick() {
+        switchPage('pattern', { transition: 'flip'});
     }
 
 addMenuButton(container, onclick, caption, image) {
